@@ -71,7 +71,7 @@ projected_crs = EPSG:6690   ; 入力データを平面投影するcrs（平面�
 
 ※ CSVデータの時刻や緯度経度に欠損がある場合，処理対象外となります．
 
-## 引用・利用について / Citation
+## 引用・利用について
 
 本モジュール（**STU-DBSCAN: Spatio-Temporal Unified DBSCAN**）を研究やプロジェクト等でご利用いただく際は、以下のURLを明記してください：
 
