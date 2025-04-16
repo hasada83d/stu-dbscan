@@ -30,7 +30,7 @@ CSVファイルに以下の4列が必要です：
 ```bash
 python stu-dbscan.py
 ```
-
+※ CSVデータの時刻や緯度経度に欠損がある場合，処理対象外となります．
 
 ## 設定ファイル例（config.ini）
 
@@ -40,13 +40,13 @@ input_path = input\points.csv
 output_path = output
 
 [PARAMETERS]
-threas_walk = 40         ; 徒歩速度[m/分]
-threas_stay = 5          ; 滞在とみなす最小時間[分]
-thread_warp = 60         ; 空白時間のしきい値[分]
+threas_walk = 40            ; 徒歩速度[m/分]
+threas_stay = 5             ; 滞在とみなす最小時間[分]
+thread_warp = 60            ; 空白時間のしきい値[分]
 
 [CRS]
-input_crs = EPSG:4326
-projected_crs = EPSG:6690
+input_crs = EPSG:4326       ; 入力データのcrs
+projected_crs = EPSG:6690   ; 入力データを平面投影するcrs（平面直角座標系）
 ```
 
 
@@ -69,15 +69,20 @@ projected_crs = EPSG:6690
 3. 補間点を除外し，滞在の間を「トリップ」として抽出します．
 4. 一定時間（例：60分）空白のあるトリップは削除または分割します．
 
+※ CSVデータの時刻や緯度経度に欠損がある場合，処理対象外となります．
+
+## 引用・利用について / Citation
+
+本モジュール（**STU-DBSCAN: Spatio-Temporal Unified DBSCAN**）を研究やプロジェクト等でご利用いただく際は、以下のURLを明記してください：
+
+> https://github.com/hasada83d/stu-dbscan
+
+論文・報告書等に引用される場合は、以下のように記載してください：
+
+> Hasada, H. (2025). STU-DBSCAN: Spatio-Temporal Unified DBSCAN.
 
 ## 参考文献
 
 - Ester, M., H. Kriegel, J. Sander, and Xiaowei Xu. 1996. “A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise.” Knowledge Discovery and Data Mining, August, 226–31.
 - Birant, Derya, and Alp Kut. 2007. “ST-DBSCAN: An Algorithm for Clustering Spatial–Temporal Data.” Data & Knowledge Engineering 60 (1): 208–21. 
 - 説明スライド: `stu-dbscan.pdf`（本リポジトリ参照）
-
-
-## その他
-
-- 緯度経度 → 平面座標変換には `EPSG:6690`（日本用）などの投影CRSをご利用ください．
-- CSVデータの時刻や緯度経度に欠損がある場合，処理対象外となります．
