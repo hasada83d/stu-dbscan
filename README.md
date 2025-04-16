@@ -5,7 +5,6 @@
 stu-dbscan (Spatio-Temporal Unified DBSCAN)は，時系列のポイント型GPSデータから「滞在」と「移動」を判定し，トリップを判定する Python スクリプトです．  
 DBSCAN（密度ベースクラスタリング）を用いて，時空間の統合的なパラメータを簡潔に設定し，柔軟にトリップ判定を行います．
 
----
 
 ## 入力データ形式
 
@@ -22,7 +21,6 @@ CSVファイルに以下の4列が必要です：
 
 なお、よく使われるポイント型データからこの形式へ変換するコードも用意しています．
 
----
 
 ## 使用方法
 
@@ -33,7 +31,6 @@ CSVファイルに以下の4列が必要です：
 python stu-dbscan.py
 ```
 
----
 
 ## 設定ファイル例（config.ini）
 
@@ -52,7 +49,6 @@ input_crs = EPSG:4326
 projected_crs = EPSG:6690
 ```
 
----
 
 ## 出力ファイル
 
@@ -64,7 +60,6 @@ projected_crs = EPSG:6690
 | `<入力ファイル名>_observation.csv` | 補間点を除いた滞在・移動データ |
 | `<入力ファイル名>_trip.csv`         | 出発地 (`o`) と目的地 (`d`) のみ抽出されたトリップデータ |
 
----
 
 ## アルゴリズム概要（簡易）
 
@@ -74,7 +69,6 @@ projected_crs = EPSG:6690
 3. 補間点を除外し，滞在の間を「トリップ」として抽出します．
 4. 一定時間（例：60分）空白のあるトリップは削除または分割します．
 
----
 
 ## 参考文献
 
@@ -82,7 +76,6 @@ projected_crs = EPSG:6690
 - Birant, Derya, and Alp Kut. 2007. “ST-DBSCAN: An Algorithm for Clustering Spatial–Temporal Data.” Data & Knowledge Engineering 60 (1): 208–21. 
 - 説明スライド: `stu-dbscan.pdf`（本リポジトリ参照）
 
----
 
 ## その他
 
