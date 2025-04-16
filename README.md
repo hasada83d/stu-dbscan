@@ -77,9 +77,9 @@ projected_crs = EPSG:6690   ; 入力データを平面投影するcrs（平面�
 
 > https://github.com/hasada83d/stu-dbscan
 
-論文・報告書等に引用される場合は、以下のように記載してください：
+論文・報告書等に引用される場合は、例えば以下のように記載してください：
 
-> Hasada, H. (2025). STU-DBSCAN: Spatio-Temporal Unified DBSCAN.
+> Hasada, Hiroyuki. 2025. Python Package: stu-dbscan. https://github.com/hasada83d/stu-dbscan.
 
 ## 参考文献
 
