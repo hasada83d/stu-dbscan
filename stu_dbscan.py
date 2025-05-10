@@ -14,17 +14,45 @@ import numpy as np
 from datetime import datetime, timedelta
 from sklearn.cluster import DBSCAN
 
+def get_utm_epsg(latitude: float, longitude: float) -> int:
+    """
+    緯度経度から対応するUTMゾーンのEPSGコードを取得する関数（WGS84基準）
+    
+    Parameters:
+        latitude (float): 緯度（-90〜90）
+        longitude (float): 経度（-180〜180）
+
+    Returns:
+        int: EPSGコード（例：32654 for UTM zone 54N）
+    """
+    if not -80.0 <= latitude <= 84.0:
+        raise ValueError("UTM座標系は緯度84N〜80Sまでが対象です。")
+    
+    # UTMゾーンの計算
+    zone = int((longitude + 180) / 6) + 1
+    
+    # 北半球ならEPSG: 326XX, 南半球ならEPSG: 327XX
+    if latitude >= 0:
+        epsg_code = 32600 + zone
+    else:
+        epsg_code = 32700 + zone
+
+    return  "EPSG:"+str(epsg_code)
+
 
 def stu_dbscan(
     points: pd.DataFrame,
-    input_crs: str,
-    projected_crs: str,
     thres_walk: float,
     thres_stay: float,
     thres_warp: float,
-    interp_freq: str = '1min'
+    interp_freq: str = '1min',
+    input_crs: str = "EPSG:4326",
+    projected_crs: str = "EPSG:xxxx",
 ):
-
+    
+    # 投影する平面直角座標
+    if projected_crs == "EPSG:xxxx":
+        projected_crs  = get_utm_epsg(points["latitude"].median(),points["longitude"].median())
 
     # 重複・欠損除去・順番整理
     points = points.drop_duplicates(['id', 'datetime']).dropna(subset=['latitude', 'longitude'])

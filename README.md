@@ -9,13 +9,14 @@ STU-DBSCAN (Spatio-Temporal Unified DBSCAN)は，時系列のGPS/GNSS観測点�
 
 | パラメータ       | 説明                                                 | 例          |
 |------------------|------------------------------------------------------|-------------|
-| points           | 観測点データ                                        | 詳細は下記  |
-| input_crs        | 入力データの CRS                                     | EPSG:4326   |
-| projected_crs    | 投影用の平面 CRS                                     | EPSG:6690   |
-| thres_walk       | 徒歩速度スケーリング係数（m/分）                     | 40          |
-| thres_stay       | 滞在判定最小時間（分）                               | 5           |
-| thres_warp       | 空白時間ギャップ閾値（分）                           | 60          |
-| interp_freq      | 線形補間間隔（秒または分単位で指定）                  | 1S/30S/1min |
+| `points`      | 観測点データ                  | 詳細は下記    |
+| `thres_walk`  | 徒歩速度スケーリング係数（m/分)| `40`          |
+| `thres_stay`  | 滞在判定最小時間（分）         | `5`           |
+| `thres_warp`  | 空白時間ギャップ閾値（分）     | `60`          |
+| **オプション** |                               |               |
+| `interp_freq` | 線形補間間隔（秒または分単位） | `1S`／`30S`／`1min` ※デフォルトは`1min` |
+| `input_crs`   | 入力データの CRS              | `EPSG:4326` ※デフォルトは`EPSG:4326`   |
+| `projected_crs`| 投影用の平面 CRS             | `EPSG:6690` ※デフォルト`EPSG:xxxx`の場合，緯度経度の中央値を含むUTMゾーンのWGS84基準のEPSGコードを自動計算   |
 
 ### 観測点データの形式
 
