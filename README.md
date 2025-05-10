@@ -2,7 +2,7 @@
 
 ## 概要
 
-stu-dbscan (Spatio-Temporal Unified DBSCAN)は，時系列のGPS/GNSS観測点データから「滞在」と「移動」を判定し，トリップを抽出する Python スクリプトです．  
+stu-dbscan (Spatio-Temporal Unified DBSCAN)は，時系列のGPS/GNSS観測点データから「滞在」と「移動」を判定し，トリップを抽出する Python 関数です．  
 密度ベースクラスタリング手法であるDBSCANを用いて，時空間を統合的に扱った簡潔なパラメータのもと，柔軟にトリップ判定を行います．
 
 ## パラメータ
@@ -33,17 +33,12 @@ stu-dbscan (Spatio-Temporal Unified DBSCAN)は，時系列のGPS/GNSS観測点�
 なお、よく使われるポイント型データからこの形式へ変換するコードも用意しています．
 
 ## 戻り値
-- interp_df：補間されたものを含む観測点データ+ interpolate/stay フラグ を含む DataFrame
-- result_df：元の観測点データ + stay/stay_str を含む DataFrame
-- trip_df：抽出されたトリップ区間（出発 o、到着 d）を含む DataFrame
 
 | 変数名      | 説明                                      |
 |-------------|-------------------------------------------|
 | interp_df   | DataFrame; 補間されたものを含む観測点データ（interpolate/stay/stay_str フラグを含む）      |
 | result_df   | DataFrame; 元の観測点データ（stay/stay_str フラグを含む）                |
 | trip_df     | DataFrame; 抽出されたトリップ区間（出発 o、到着 d）                      |
-
-
 
 
 ## アルゴリズム概要
