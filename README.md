@@ -22,35 +22,6 @@ CSVファイルに以下の4列が必要です：
 
 なお、よく使われるポイント型データからこの形式へ変換するコードも用意しています．
 
----
-
-## 使用方法
-
-1. `config.ini` ファイルを作成（下記参照）
-2. ターミナルなどでスクリプトを実行
-
-```bash
-python stu-dbscan.py
-```
-
----
-
-## 設定ファイル例（config.ini）
-
-```ini
-[PATH]
-input_path = input\points.csv
-output_path = output
-
-[PARAMETERS]
-threas_walk = 40         ; 徒歩速度[m/分]
-threas_stay = 5          ; 滞在とみなす最小時間[分]
-thread_warp = 60         ; 空白時間のしきい値[分]
-
-[CRS]
-input_crs = EPSG:4326
-projected_crs = EPSG:6690
-```
 
 ---
 
@@ -79,7 +50,6 @@ projected_crs = EPSG:6690
 ## 参考文献
 
 - Ester, M., H. Kriegel, J. Sander, and Xiaowei Xu. 1996. “A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise.” Knowledge Discovery and Data Mining, August, 226–31.
-- Birant, Derya, and Alp Kut. 2007. “ST-DBSCAN: An Algorithm for Clustering Spatial–Temporal Data.” Data & Knowledge Engineering 60 (1): 208–21. 
 - 説明スライド: `stu-dbscan.pdf`（本リポジトリ参照）
 
 ---
